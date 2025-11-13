@@ -1,9 +1,16 @@
 {% extends 'base.html' %}
 {% block content %}
 <h4 style="color:var(--roxo)">Exercícios recomendados</h4>
-{% if exercicios %}
+
+{% if current_user.role in ['admin', 'colaborador'] %}
+  {% set exercicios_para_mostrar = exercicios %}
+{% else %}
+  {% set exercicios_para_mostrar = exercicios|selectattr('tags', 'intersect', current_user.tags)|list %}
+{% endif %}
+
+{% if exercicios_para_mostrar %}
   <div class="row g-3 mt-3">
-    {% for e in exercicios %}
+    {% for e in exercicios_para_mostrar %}
       <div class="col-md-6">
         <div class="card p-3">
           <h5>{{ e.titulo }}</h5>
