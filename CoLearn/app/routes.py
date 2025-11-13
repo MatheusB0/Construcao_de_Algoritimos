@@ -157,7 +157,7 @@ def view_exercicio(id):
         db.session.commit()
         flash('Submissão enviada!', 'success')
         return redirect(url_for('exercicio.view_exercicio', id=id))
-    if current_user.role in ['admin', 'professor']:
+    if current_user.role in ['admin', 'colaborador']:
         submissoes = Submissao.query.filter_by(exercicio_id=id).order_by(Submissao.created_at.desc()).all()
     else:
         submissoes = Submissao.query.filter_by(user_id=current_user.id, exercicio_id=id).order_by(Submissao.created_at.desc()).all()
@@ -178,4 +178,5 @@ def editar_submissao(id):
         flash('Submissão atualizada!', 'success')
         return redirect(url_for('exercicio.view_exercicio', id=submissao.exercicio_id))
     return render_template('editar_submissao.html', submissao=submissao)
+
 
