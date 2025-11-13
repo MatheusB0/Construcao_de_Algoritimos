@@ -2,5 +2,7 @@ Flask
 Flask-SQLAlchemy
 Flask-Login
 Flask-Bcrypt
+psycopg2-binary
 gunicorn
 python-dotenv
+
