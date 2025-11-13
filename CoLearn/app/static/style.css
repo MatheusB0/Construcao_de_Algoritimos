@@ -1,0 +1,332 @@
+:root {
+  --primary: #6c63ff;
+  --primary-dark: #5148d8;
+  --secondary: #b39ddb;
+  --accent: #9c27b0;
+  --background: #f5f5fa;
+  --card-bg: #ffffff;
+  --text: #2c2c34;
+  --text-light: #666;
+  --shadow: rgba(0, 0, 0, 0.1);
+}
+
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  background-color: var(--background);
+  color: var(--text);
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+main {
+  flex: 1;
+}
+
+.navbar {
+  background-color: var(--primary);
+  color: #fff;
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 3px 10px var(--shadow);
+}
+
+.navbar a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 600;
+  margin-left: 1rem;
+  transition: color 0.3s;
+}
+
+.navbar a:hover {
+  color: var(--secondary);
+}
+
+.container {
+  max-width: 1100px;
+  width: 90%;
+  margin: 2rem auto;
+}
+
+.card {
+  background: var(--card-bg);
+  border-radius: 1rem;
+  padding: 1.5rem;
+  box-shadow: 0 4px 12px var(--shadow);
+  transition: transform 0.2s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 18px rgba(108, 99, 255, 0.2);
+}
+
+h1, h2, h3, h4, h5 {
+  color: var(--primary-dark);
+  font-weight: 600;
+}
+
+p {
+  color: var(--text-light);
+}
+
+form {
+  background: var(--card-bg);
+  padding: 2rem;
+  border-radius: 1rem;
+  box-shadow: 0 4px 12px var(--shadow);
+  width: 100%;
+  max-width: 600px;
+  margin: 2rem auto;
+  text-align: center;
+}
+
+input, select, textarea {
+  padding: 0.8rem 1rem;
+  border: 1px solid #ccc;
+  border-radius: 0.6rem;
+  font-size: 1rem;
+  outline: none;
+  transition: 0.2s;
+}
+
+input:focus, select:focus, textarea:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(108, 99, 255, 0.2);
+}
+
+button, .btn {
+  background-color: var(--primary);
+  color: #fff;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.6rem;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.1s;
+}
+
+button:hover, .btn:hover {
+  background-color: var(--primary-dark);
+  transform: translateY(-2px);
+}
+
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+}
+
+.user-card {
+  background: var(--card-bg);
+  border-left: 6px solid var(--primary);
+  padding: 1rem;
+  border-radius: 1rem;
+  transition: 0.3s;
+}
+
+.user-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 15px rgba(108, 99, 255, 0.2);
+}
+
+footer {
+  background-color: var(--primary-dark);
+  color: #fff;
+  text-align: center;
+  padding: 1rem;
+  margin-top: auto;
+}
+
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+    gap: 0.5rem;
+    text-align: center;
+  }
+
+  form {
+    width: 95%;
+  }
+
+  .container {
+    width: 95%;
+  }
+}
+
+.dificuldades-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+  margin: 10px 0 20px 0;
+}
+
+.dificuldade-item {
+  background: #f6f1ff;
+  border: 1px solid #c9b6ff;
+  padding: 6px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.dificuldade-item:hover {
+  background: #e5d7ff;
+  border-color: var(--primary);
+}
+
+.dificuldade-item input {
+  display: none;
+}
+
+.dificuldade-item input:checked + span,
+.dificuldade-item:has(input:checked) {
+  background: var(--primary-dark);
+  color: #fff;
+  border-color: var(--primary);
+}
+
+.page-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.card-form {
+  background: var(--card-bg);
+  border-radius: 1.5rem;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  padding: 2.5rem;
+  width: 90%;
+  max-width: 700px;
+  text-align: center;
+  animation: fadeUp 0.6s ease;
+}
+
+.card-form h4 {
+  color: var(--primary-dark);
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+}
+
+.input-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+
+.input-group input,
+.input-group select,
+.extra-input {
+  flex: 1 1 45%;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #d5c6fa;
+  font-size: 0.95rem;
+  outline: none;
+  transition: 0.2s;
+}
+
+.input-group input:focus,
+.input-group select:focus,
+.extra-input:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 5px rgba(108, 99, 255, 0.3);
+}
+
+.extra-input {
+  width: 100%;
+  margin-top: 0.5rem;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #d5c6fa;
+  font-size: 0.95rem;
+  outline: none;
+  transition: 0.2s;
+}
+
+.extra-input:focus,
+textarea.extra-input:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 5px rgba(108, 99, 255, 0.3);
+}
+
+button {
+  background: var(--primary);
+  color: #fff;
+  font-weight: 600;
+  border: none;
+  border-radius: 10px;
+  padding: 10px 25px;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.1s;
+  width: 50%;
+}
+
+button:hover {
+  background: var(--primary-dark);
+}
+
+.btn-action {
+  padding: 6px 14px;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  min-width: 90px;
+  width: auto;
+  border: none !important;            /* remove borda */
+  outline: none !important;           /* remove contorno */
+  box-shadow: none !important;        /* remove sombra interna */
+  background-clip: padding-box;
+  cursor: pointer;
+  color: #fff;
+  background-color: var(--primary);
+  -webkit-appearance: none;           /* remove estilo nativo Chrome/Safari */
+  -moz-appearance: none;              /* remove estilo nativo Firefox */
+  appearance: none;                    /* remove estilo nativo outros navegadores */
+  transition: background-color 0.2s, transform 0.1s;
+}
+
+.btn-action.promover {
+  background-color: var(--primary);
+}
+
+.btn-action.rebaixar {
+  background-color: #dc3545;
+}
+
+.btn-action:hover {
+  opacity: 0.95;
+  transform: translateY(-2px);
+}
+
+.btn-action:focus,
+.btn-action:focus-visible {
+  outline: none !important;
+  box-shadow: none !important;
+}
+form.inline-form {
+  display: inline;      /* mantém o layout inline */
+  margin: 0;            /* remove margens extras */
+  padding: 0;           /* remove padding que causa a borda */
+  border: none;         /* remove borda padrão */
+  outline: none;        /* remove outline */
+}
+
+form.inline-form button {
+  margin: 0;
+  padding: 5px 12px;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  border-radius: 8px;
+}

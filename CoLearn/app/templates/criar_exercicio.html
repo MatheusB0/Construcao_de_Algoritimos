@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="page-container">
+  <div class="card-form">
+    <h4>Criar exercício</h4>
+    <form method="POST">
+      <div class="input-group">
+        <input name="titulo" placeholder="Título" required>
+        <select name="dificuldade" required>
+          <option value="">Selecione a dificuldade</option>
+          {% for d in opcoes %}
+            <option value="{{d}}">{{d}}</option>
+          {% endfor %}
+        </select>
+      </div>
+
+      <textarea class="extra-input" name="descricao" rows="6" placeholder="Descrição" required></textarea>
+
+      <button type="submit">Criar</button>
+    </form>
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="d-flex justify-content-between align-items-start mb-3">
+  <div>
+    <h2 style="color:var(--roxo)">Olá, {{ current_user.username }}</h2>
+    <small class="text-muted">Dificuldades: {{ current_user.dificuldades or '—' }}</small>
+  </div>
+  <div>
+    <a class="btn btn-outline-light me-1" href="{{ url_for('main.editar_perfil') }}">Editar perfil</a>
+    <a class="btn btn-outline-light" href="{{ url_for('main.exercicios') }}">Exercícios</a>
+  </div>
+</div>
+
+{% if colegas %}
+  <div class="row g-3">
+    {% for c in colegas %}
+      <div class="col-md-4">
+        <div class="card p-3 h-100">
+          <div class="d-flex justify-content-between">
+            <div>
+              <h5>{{ c.username }}</h5>
+              <small class="text-muted">{{ c.nivel or 'N/A' }}</small>
+              <p class="small mt-2 mb-0">Dificuldades: {{ c.dificuldades or '—' }}</p>
+            </div>
+            <div>
+              <a class="btn btn-sm btn-outline-light" href="mailto:{{ c.email }}">Contactar</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+{% else %}
+  <div class="card p-3 text-center text-muted">Nenhum colega com dificuldades semelhantes encontrado.</div>
+{% endif %}
+{% endblock %}

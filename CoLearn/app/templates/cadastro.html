@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="page-container">
+  <div class="card-form">
+    <h4>Criar conta</h4>
+
+    <form method="POST">
+      <div class="input-group">
+        <input type="text" name="username" placeholder="Nome público" required>
+        <input type="email" name="email" placeholder="E-mail" required>
+      </div>
+
+      <div class="input-group">
+        <input type="password" name="senha" placeholder="Senha" required>
+        <select name="nivel">
+          <option value="">Nível (opcional)</option>
+          <option value="iniciante">Iniciante</option>
+          <option value="intermediario">Intermediário</option>
+          <option value="avancado">Avançado</option>
+        </select>
+      </div>
+
+      <label class="label-dificuldade">Dificuldades</label>
+      <div class="dificuldades-group">
+        {% for d in opcoes %}
+          <label class="dificuldade-item">
+            <input type="checkbox" name="dificuldades" value="{{ d }}">
+            {{ d }}
+          </label>
+        {% endfor %}
+      </div>
+
+      <input type="text" name="custom_dificuldade" placeholder="Outra dificuldade (opcional)" class="extra-input">
+
+      <button type="submit">Cadastrar</button>
+    </form>
+  </div>
+</div>
+{% endblock %}

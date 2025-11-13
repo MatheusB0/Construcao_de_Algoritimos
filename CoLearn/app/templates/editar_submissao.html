@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container py-4" style="max-width:600px;">
+  <div class="card shadow-sm">
+    <div class="card-body">
+      <h4 class="card-title text-primary mb-4">Editar Submissão</h4>
+      <form method="POST">
+        <div class="mb-3">
+          <label for="status" class="form-label">Status</label>
+          <select class="form-select" id="status" name="status" required>
+            <option value="Pendente" {% if submissao.status=='Pendente' %}selected{% endif %}>Pendente</option>
+            <option value="Corrigido" {% if submissao.status=='Corrigido' %}selected{% endif %}>Corrigido</option>
+            <option value="Aprovado" {% if submissao.status=='Aprovado' %}selected{% endif %}>Aprovado</option>
+            <option value="Reprovado" {% if submissao.status=='Reprovado' %}selected{% endif %}>Reprovado</option>
+          </select>
+        </div>
+
+        <div class="mb-3">
+          <label for="nota" class="form-label">Nota</label>
+          <input type="number" step="0.1" class="form-control" id="nota" name="nota" value="{{ submissao.nota or '' }}">
+        </div>
+
+        <button type="submit" class="btn btn-success">Salvar</button>
+        <a href="{{ url_for('exercicio.view_exercicio', id=submissao.exercicio_id) }}" class="btn btn-secondary ms-2">Cancelar</a>
+      </form>
+    </div>
+  </div>
+</div>
+{% endblock %}

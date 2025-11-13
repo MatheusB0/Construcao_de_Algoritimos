@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block content %}
+<h4 style="color:var(--roxo)">Exercícios recomendados</h4>
+{% if exercicios %}
+  <div class="row g-3 mt-3">
+    {% for e in exercicios %}
+      <div class="col-md-6">
+        <div class="card p-3">
+          <h5>{{ e.titulo }}</h5>
+          <small class="text-muted">{{ e.dificuldade }}</small>
+          <p class="mt-2">{{ e.descricao }}</p>
+          <small class="text-muted">Autor: {{ e.autor.username if e.autor else '—' }}</small>
+          <div class="mt-2">
+            <a href="{{ url_for('exercicio.view_exercicio', id=e.id) }}" class="btn btn-sm btn-primary">
+              Ver / Submeter
+            </a>
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+{% else %}
+  <p class="text-muted">Nenhum exercício disponível para suas dificuldades.</p>
+{% endif %}
+{% endblock %}
