@@ -157,7 +157,10 @@ def view_exercicio(id):
         db.session.commit()
         flash('Submissão enviada!', 'success')
         return redirect(url_for('exercicio.view_exercicio', id=id))
-    submissoes = Submissao.query.filter_by(user_id=current_user.id, exercicio_id=id).order_by(Submissao.created_at.desc()).all()
+    if current_user.role in ['admin', 'professor']:
+        submissoes = Submissao.query.filter_by(exercicio_id=id).order_by(Submissao.created_at.desc()).all()
+    else:
+        submissoes = Submissao.query.filter_by(user_id=current_user.id, exercicio_id=id).order_by(Submissao.created_at.desc()).all()
     return render_template('view_exercicio.html', exercicio=exercicio, submissoes=submissoes)
 
 @exercicio_bp.route('/submissao/<int:id>/editar', methods=['GET','POST'])
@@ -175,3 +178,4 @@ def editar_submissao(id):
         flash('Submissão atualizada!', 'success')
         return redirect(url_for('exercicio.view_exercicio', id=submissao.exercicio_id))
     return render_template('editar_submissao.html', submissao=submissao)
+
